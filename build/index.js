@@ -656,6 +656,8 @@ var CookieConsent = function (_Component) {
           expires = _props2.expires,
           hideOnAccept = _props2.hideOnAccept,
           onAccept = _props2.onAccept,
+          _props2$setAcceptCook = _props2.setAcceptCookie,
+          setAcceptCookie = _props2$setAcceptCook === undefined ? true : _props2$setAcceptCook,
           extraCookieOptions = _props2.extraCookieOptions;
 
       // fire onAccept
@@ -665,7 +667,7 @@ var CookieConsent = function (_Component) {
       // remove listener if set
       window.removeEventListener("scroll", this.handleScroll);
 
-      _jsCookie2.default.set(cookieName, cookieValue, _extends({ expires: expires }, extraCookieOptions));
+      if (setAcceptCookie) _jsCookie2.default.set(cookieName, cookieValue, _extends({ expires: expires }, extraCookieOptions));
 
       if (hideOnAccept) {
         this.setState({ visible: false });

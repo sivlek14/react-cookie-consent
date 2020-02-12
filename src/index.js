@@ -107,6 +107,7 @@ class CookieConsent extends Component {
       expires,
       hideOnAccept,
       onAccept,
+      setAcceptCookie = true,
       extraCookieOptions
     } = this.props;
 
@@ -116,7 +117,8 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
+    if (setAcceptCookie)
+      Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
 
     if (hideOnAccept) {
       this.setState({ visible: false });
